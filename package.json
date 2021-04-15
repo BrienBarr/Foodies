@@ -1,0 +1,22 @@
+{
+    "name": "foodies",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./server/server.js",
+    "repository": "",
+    "author": "",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+        "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+        "client": "cd client && npm run start"
+    },
+    "devDependencies": {
+        "concurrently": "^4.1.0"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "react-icons": "^4.2.0"
+    }
+}

@@ -21,13 +21,13 @@ const ThirdPartyProviderSchema = new Schema({
 
 
 const UserSchema = new Schema({
-    emaiL: {
+    email: {
         type: String,
         required: true,
         unique: true
 
     },
-    email_is_varified: {
+    email_is_verified: {
         type: Boolean,
         default: false
     },
@@ -50,16 +50,8 @@ const UserSchema = new Schema({
         type: String
     },
     post: [{
-        title: {
-            type: String
-        },
-        body: {
-            type: String
-        },
-        day: {
-            type: Date,
-            default: Date.now()
-        }
+       type: Schema.Types.ObjectId,
+       ref: "Post"
     }
     ],
     // this is part of the third party authentication

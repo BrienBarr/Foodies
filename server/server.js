@@ -8,7 +8,6 @@ const passport = require("./passport/setup");
 //imports our login authentication routes
 const auth = require("./routes/auth");
 const routes = require("./routes/api-routes");
-
 const app = express();
 const port = process.env.PORT || 3001;
 const MONGODB_URI = "mongodb://localhost/Foodies"

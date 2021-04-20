@@ -7,9 +7,13 @@ const mongoose = require("mongoose");
 const passport = require("./passport/setup");
 //imports our login authentication routes
 const auth = require("./routes/auth");
+<<<<<<< HEAD
+const routes = require("./routes/api-routes");
+=======
 const routes = require("./routes");
 
 
+>>>>>>> main
 const app = express();
 const port = process.env.PORT || 3001;
 const MONGODB_URI = "mongodb://localhost/Foodies"

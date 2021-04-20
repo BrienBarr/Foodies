@@ -42,7 +42,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 // import MailIcon from '@material-ui/icons/Mail';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import CollapsableMenu from './CollapsableMenu';
+// import CollapsableMenu from './CollapsableMenu';
 
 const useStyles = makeStyles((theme) => ({
   grow: {

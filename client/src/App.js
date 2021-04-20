@@ -23,12 +23,13 @@ return (
         <Router>
             <Nav />
             <Wrapper>
-            <Switch>
-                <Route exact path="/" component={Login} />
-                <Route exact path="/home" component={Home} />
+              
+            {/* <Switch> */}
+                {/* <Route exact path="/" component={Login} /> */}
+                {/* <Route exact path="/home" component={Home} /> */}
                 {/* <Route exact path="/profile" component={Profile} /> */}
                 {/* <Route exact path="/CreatePost" component={CreatePost} /> */}
-            </Switch>
+            {/* </Switch> */}
             </Wrapper>
             <Footer />
         </Router>

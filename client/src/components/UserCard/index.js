@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import PeopleIcon from '@material-ui/icons/People';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import ImageAvatars from './ImageAvatars';
+import ImageAvatars from '../ImageAvatars';
 import { People } from '@material-ui/icons';
 
 const useStyles = makeStyles({

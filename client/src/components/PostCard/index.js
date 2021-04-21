@@ -46,7 +46,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import Ratings from './Ratings';
+import Ratings from '../Ratings';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,7 +97,7 @@ export default function PostCard() {
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image="../../images/cards/paella.jpg"
         title="Paella dish"
       />
       <CardContent>

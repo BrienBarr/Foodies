@@ -38,12 +38,15 @@ import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import Ratings from '../Ratings';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Card() {
+export default function PostCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -84,17 +87,17 @@ export default function Card() {
             R
           </Avatar>
         }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
+        // action={
+        //   <IconButton aria-label="settings">
+        //     <MoreVertIcon />
+        //   </IconButton>
+        // }
         title="Shrimp and Chorizo Paella"
         subheader="September 14, 2016"
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image="../../images/cards/paella.jpg"
         title="Paella dish"
       />
       <CardContent>
@@ -104,13 +107,17 @@ export default function Card() {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
+        <Ratings />
         <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
+          <ThumbUpIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        {/* <IconButton aria-label="share">
           <ShareIcon />
-        </IconButton>
-        <IconButton
+        </IconButton> */}
+        <Button size="small" color="primary">
+          Share
+        </Button>
+        {/* <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
           })}
@@ -119,7 +126,7 @@ export default function Card() {
           aria-label="show more"
         >
           <ExpandMoreIcon />
-        </IconButton>
+        </IconButton> */}
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
@@ -146,6 +153,10 @@ export default function Card() {
           <Typography>
             Set aside off of the heat to let rest for 10 minutes, and then serve.
           </Typography>
+          {/* Like Button */}
+          {/* Share on feed button? */}
+          
+          {/* Social Sharing Buttons */}
         </CardContent>
       </Collapse>
     </Card>

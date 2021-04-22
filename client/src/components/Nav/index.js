@@ -43,6 +43,8 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import MoreIcon from '@material-ui/icons/MoreVert';
 // import CollapsableMenu from './CollapsableMenu';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -106,7 +108,19 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  link: {
+    color: "white",
+    hover: "red",
+    visited: "grey",
+    marginRight: "10px",
+    fontSize: "1.25rem"
+  }
 }));
+
+function handleClick(event) {
+  event.preventDefault();
+  console.info('You clicked a breadcrumb.');
+}
 
 export default function Navigation() {
   const classes = useStyles();
@@ -148,9 +162,10 @@ export default function Navigation() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>Home</MenuItem>
+      <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>Posts</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Create</MenuItem>
       <Divider />
       <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
     </Menu>
@@ -231,6 +246,26 @@ export default function Navigation() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+          </div>
+
+          <div>
+            {/* <Breadcrumbs aria-label="breadcrumb"> */}
+              <Link className={classes.link} href="/" onClick={handleClick}>
+                Home
+              </Link>
+              <Link className={classes.link} href="/profile" onClick={handleClick}>
+                My Profile
+              </Link>
+              <Link className={classes.link} href="/posts" onClick={handleClick}>
+                View Posts
+              </Link>
+              <Link className={classes.link} href="/create" onClick={handleClick}>
+                Create Posts
+              </Link>
+              <Link className={classes.link} href="/logout" onClick={handleClick}>
+                Logout
+              </Link>
+            {/* </Breadcrumbs> */}
           </div>
 
           <div className={classes.grow} />

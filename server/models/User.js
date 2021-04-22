@@ -44,10 +44,16 @@ const UserSchema = new Schema({
         }
     },
     password: {
-        type: String
+      type: String
     },
     userName: {
-        type: String
+      type: String
+    },
+    firstName: {
+      type: String
+    },
+    lastName: {
+      type: String
     },
     post: [{
        type: Schema.Types.ObjectId,

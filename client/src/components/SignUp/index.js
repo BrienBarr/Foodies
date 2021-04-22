@@ -1,5 +1,5 @@
 // create sign form for import into authentication page
-import React from 'react';
+import React, {useRef} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from '../Copyright';
+import API from '../../utils/API';
+// import e from 'express';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,8 +37,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const signupUser = e => {
+  e.preventDefault();
+
+}
+
 export default function SignUp() {
   const classes = useStyles();
+
+  const fNameRef = useRef();
+  const lNameRef = useRef();
+  const emailRef = useRef();
+  const passRef = useRef();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -49,12 +61,13 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={signupUser}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
+                ref={fNameRef}
                 variant="outlined"
                 required
                 fullWidth
@@ -71,6 +84,7 @@ export default function SignUp() {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
+                ref={lNameRef}
                 autoComplete="lname"
               />
             </Grid>
@@ -82,6 +96,7 @@ export default function SignUp() {
                 id="email"
                 label="Email Address"
                 name="email"
+                ref={emailRef}
                 autoComplete="email"
               />
             </Grid>
@@ -91,6 +106,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 name="password"
+                ref={passRef}
                 label="Password"
                 type="password"
                 id="password"

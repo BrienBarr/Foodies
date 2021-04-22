@@ -6,6 +6,7 @@ import UserCard from '../components/UserCard/';
 const Profile = () => {
     return (
         <div>
+          <h2>My Profile</h2>
           <UserCard />
         </div>
     )

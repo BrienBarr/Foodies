@@ -24,7 +24,8 @@ const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
 
     },
     email_is_verified: {
@@ -44,16 +45,26 @@ const UserSchema = new Schema({
         }
     },
     password: {
-        type: String
+        type: String,
+        required: true,
+        validate: [({ length }) => length >= 6, "Password should be longer."],
+        trim: true
     },
     userName: {
+        type: String,
+        required: true
+    },
+    first_name: {
+        type: String,
+        required: true
+    },
+    last_name: {
+        type: String,
+        required: true
+    },
+    discription: {
         type: String
     },
-    post: [{
-       type: Schema.Types.ObjectId,
-       ref: "Post"
-    }
-    ],
     // this is part of the third party authentication
     third_party_auth: [ThirdPartyProviderSchema],
     date: {

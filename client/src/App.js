@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login/';
 import SignUp from './components/SignUp/';
-import Home from './pages/Home';
+import Home from './pages/home';
 import useToken from './useToken.js';
 
 function App() {

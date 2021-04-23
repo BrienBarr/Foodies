@@ -9,6 +9,7 @@ import './App.css';
 import Login from './components/Login/';
 import SignUp from './components/SignUp/';
 import Home from './pages/Home';
+import Posts from './pages/Posts';
 import useToken from './useToken.js';
 
 function App() {
@@ -23,16 +24,19 @@ return (
         <Router>
           <div>
             <Nav />
+            {/* { () => { if(user) { return <Nav />; } } }             */}
             <Wrapper>
               <Switch>
                   <Route exact path="/" component={Login} />
                   <Route exact path="/signup" component={SignUp} />
                   <Route exact path="/home" component={Home} />
                   <Route exact path="/profile" component={Profile} />
+                  <Route exact path="/posts" component={Posts} />
                   <Route exact path="/create" component={CreatePost} />
               </Switch>
             </Wrapper>
             <Footer />
+            {/* { () => { if(user) { return <Footer />; } } }    */}
           </div>
         </Router>
     </div>

@@ -5,6 +5,7 @@ import PostCard from '../components/PostCard';
 const Home = () => {
     return (
         <div>
+          <h2>Home</h2>
           <PostCard />
         </div>
     )

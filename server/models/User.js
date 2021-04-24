@@ -26,7 +26,6 @@ const UserSchema = new Schema({
         required: true,
         unique: true,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
-
     },
     email_is_verified: {
         type: Boolean,
@@ -62,7 +61,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    discription: {
+    description: {
         type: String
     },
     // this is part of the third party authentication

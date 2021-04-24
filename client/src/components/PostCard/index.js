@@ -46,7 +46,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import Ratings from '../Ratings';
+// import Ratings from '../Ratings';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,7 +107,7 @@ export default function PostCard() {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <Ratings />
+        {/* <Ratings /> */}
         <IconButton aria-label="add to favorites">
           <ThumbUpIcon />
         </IconButton>

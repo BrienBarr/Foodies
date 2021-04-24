@@ -20,6 +20,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import API from '../../utils/API';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,15 +49,56 @@ const useStyles = makeStyles((theme) => ({
 
 
 
+
+
 export default function PostForm() {
   const classes = useStyles();
 
   const [category, setCategory] = React.useState('');
-
-  const handleChange = (event) => {
+  // state values for the recipe form
+  const [Title, SetTitle] = React.useState('');
+  const [Image, SetImage] = React.useState('');
+  const [Ingredients, SetIngredients] = React.useState('');
+  const [Instructions, SetInstructions] = React.useState('');
+  const [Link, SetLink] = React.useState('');
+  const [Description, SetDescription] = React.useState('');
+  // state values for the resturant form
+  const [ResTitle, SetResTitle] = React.useState('')
+  const [ResAddress, SetResAddress] = React.useState('');
+  const [ResImage, SetResImage] = React.useState('');
+  const [ResReview, SetResReview] = React.useState('');
+  const [ResLink, SetResLink] = React.useState('');
+  const [ResDescription, SetResDescription] = React.useState('');
+  
+  const handleChange = (event) => { 
     setCategory(event.target.value);
   };
-
+  const handleSubmit = () => {
+    if(category === recipe){
+      API.savePost({
+        // created_by: , need to know how to connect the curretn user to this field
+        title: Title,
+        description: Description,
+        image: Image,
+        ingredients: Ingredients,
+        instructions: Instructions,
+        link: Link 
+      }).then(console.log("data saved"))
+      .catch(err, console.log(err))
+    }
+    else{
+      API.savePost({
+        // created_by: , need to know how to connect the curretn user to this field
+        title: ResTitle,
+        description: ResDescription,
+        address: ResAddress,
+        image: ResImage,
+        body: ResReview,
+        link: ResLink
+      }).then(console.log("data saved"))
+      .catch(err, console.log(err))
+    }
+  } // need on route to post a new post
   const renderFields = (category) => {
     switch(category) {
       case "Recipe":
@@ -70,6 +112,28 @@ export default function PostForm() {
             placeholder="Enter a name for the recipe..."
             variant="outlined"
             name="recipeName"
+            onChange={e => SetTitle(e.target.value)}
+          />
+          <br/>
+          <TextField
+            className={classes.textField}
+            required
+            id="recipeDescription"
+            label="Recipe Description"
+            placeholder="Enter a short description about the recipe"
+            variant="outlined"
+            name="recipeDescription"
+            onChange={e => SetDescription(e.target.value)}
+          />
+          <br/>
+          <TextField
+            className={classes.textField}
+            id="recipeImage"
+            label="Recipe image"
+            placeholder="Enter a image for the recipe..."
+            variant="outlined"
+            name="recipeImage"
+            onChange={e => SetImage(e.target.value)}
           />
           <br/>
           <Typography>Field to insert image...</Typography>
@@ -84,6 +148,7 @@ export default function PostForm() {
             placeholder="List the Ingredients"
             variant="outlined"
             name="ingredients"
+            onChange={e => SetIngredients(e.target.value)}
           />
           <br/>
           <TextField
@@ -96,6 +161,7 @@ export default function PostForm() {
             placeholder="Type the recipe instructions..."
             variant="outlined"
             name="instructions"
+            onChange={e => SetInstructions(e.target.value)}
           />
           <br/>
           <TextField
@@ -105,6 +171,7 @@ export default function PostForm() {
             placeholder="Enter a link to the recipe..."
             variant="outlined"
             name="recipeLink"
+            onChange={e => SetLink(e.target.value)}
           />
           <Button variant="contained" color="primary">
             Create Post
@@ -123,6 +190,39 @@ export default function PostForm() {
             placeholder="Enter the restaurant's name..."
             variant="outlined"
             name="restaurantName"
+            onChange={e => SetResTitle(e.target.value)}
+          />
+          <br/>
+          <TextField
+            className={classes.textField}
+            required
+            id="ResturantDescription"
+            label="Resturant Description"
+            placeholder="Enter a short description about the resturant"
+            variant="outlined"
+            name="resturantDescription"
+            onChange={e => SetResDescription(e.target.value)}
+          />
+          <br/>
+          <TextField
+            className={classes.textField}
+            id="ResturantAddress"
+            label="Resturant Address"
+            placeholder="Enter a address for the Resturant..."
+            variant="outlined"
+            name="resturantAddress"
+            onChange={e => SetResAddress(e.target.value)}
+
+          />
+          <br/>
+          <TextField
+            className={classes.textField}
+            id="ResturantImage"
+            label="Resturant image"
+            placeholder="Enter a image for the Resturant..."
+            variant="outlined"
+            name="resturantImage"
+            onChange={e => SetResImage(e.target.value)}
           />
           <br/>
           <Typography>Field to insert image...</Typography>
@@ -137,6 +237,7 @@ export default function PostForm() {
             placeholder="What was your experience at this restaurant?"
             variant="outlined"
             name="review"
+            onChange={e => SetResReview(e.target.value)}
           />
           <br/>
           <TextField
@@ -146,8 +247,9 @@ export default function PostForm() {
             placeholder="Enter a link to the restaurant's website..."
             variant="outlined"
             name="restaurantLink"
+            onChange={e => SetResLink(e.target.value)}
           />
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
             Create Post
           </Button>
         </div>;

@@ -4,8 +4,11 @@ const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
     created_by: {
-        type: String,
-        required: true
+        type: Schema.Types.ObjectId,
+        ref: "Users"
+    },
+    description: {
+        type: String
     },
     category: {
         type: String,
@@ -33,16 +36,17 @@ const PostSchema = new Schema({
         type: String
     },
     ingredients: {  // set up to list the ingredients as array of strings but can be changed to just string if needed
-        type: [String]
+        type: String
     },
     instructions: {  // set up to list the instructions as array of strings but can be changed to just string if needed
-        type: [String]
+        type: String
     },
     likes: {
         type: Number
     },
-    comments: { // set up to list comments as array of strings
-        type: [String]
+    comments: {
+        type: Schema.Types.ObjectId,
+        ref: "Comments"
     },
     day: {
         type: Date,

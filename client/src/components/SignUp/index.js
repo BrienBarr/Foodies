@@ -49,6 +49,11 @@ export default function SignUp() {
   const lNameRef = useRef();
   const emailRef = useRef();
   const passRef = useRef();
+  const UserNameRef = useRef();
+
+  const handleSubmit = () => {
+
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -93,6 +98,18 @@ export default function SignUp() {
                 variant="outlined"
                 required
                 fullWidth
+                id="UserName"
+                label="UserName"
+                name="userName"
+                ref={UserNameRef}
+                autoComplete="UserName"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
@@ -126,6 +143,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Sign Up
           </Button>

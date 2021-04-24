@@ -9,7 +9,7 @@ const PostSchema = new Schema({
     },
     category: {
         type: String,
-        default: recipe
+        default: "recipe"
     },
     title: {
         type: String,
@@ -24,7 +24,7 @@ const PostSchema = new Schema({
         trim: true
     },
     review: {      // unless we want this to be whole numbers only
-        type: Decimal128
+        type: mongoose.Decimal128
     },
     link: {
         type: String

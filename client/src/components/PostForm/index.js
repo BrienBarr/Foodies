@@ -76,7 +76,7 @@ export default function PostForm() {
   const handleSubmit = () => {
     if(category === recipe){
       API.savePost({
-        // created_by: , need to know how to connect the curretn user to this field
+        // created_by: , need to know how to connect the current user to this field
         title: Title,
         description: Description,
         image: Image,
@@ -88,7 +88,7 @@ export default function PostForm() {
     }
     else{
       API.savePost({
-        // created_by: , need to know how to connect the curretn user to this field
+        // created_by: , need to know how to connect the current user to this field
         title: ResTitle,
         description: ResDescription,
         address: ResAddress,

@@ -1,42 +1,42 @@
 const router = require("express").Router();
 const postsController = require("../../controllers/PostControlller");
 
-// Matches with "/api/posts"
+// Matches with "/api/post"
 router
   .route("/")
   .get(postsController.findAll)
   .post(postsController.create);
 
-// Matches with "/api/posts/:id"
+// Matches with "/api/post/:id"
 router
   .route("/:id")
   .get(postsController.findById)
   .put(postsController.update)
   .delete(postsController.remove);
 
-// Matches with "/api/posts/:cat"
-router
-  .route("/:cat")
-  .get(postsController.findByCat);
+// // Matches with "/api/post/:cat"
+// router
+//   .route("/:cat")
+//   .get(postsController.findByCat);
 
-// Matches with "/api/posts/:user"
-router
-.route("/:user")
-.get(postsController.findUserPost);
+// // Matches with "/api/post/:user"
+// router
+// .route("/:user")
+// .get(postsController.findUserPost);
 
-// Matches with "/api/posts/:user/:cat"
-router
-  .route("/:user/:cat")
-  .get(postsController.findUserPostByCat);
+// // Matches with "/api/post/:user/:cat"
+// router
+//   .route("/:user/:cat")
+//   .get(postsController.findUserPostByCat);
 
-// Matches with "/api/posts/:id/:likes"
+// Matches with "/api/post/:id/:likes"
 router
-  .route("/:id/:likes")
+  .route("/likes/:id")
   .get(postsController.findLikes);
 
-// Matches with "/api/posts/:id/:likes"
+// Matches with "/api/post/:id/:likes"
 router
-  .route("/:id/:comments")
+  .route("/comments/:id")
   .get(postsController.findComments);
 
 module.exports = router;

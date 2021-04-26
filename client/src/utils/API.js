@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default {
   createUser: function(userdata) {
-    return axios.post("/", userdata);
+    return axios.post("/api/Users", userdata);
   },
   // Gets all posts
   getPosts: function() {

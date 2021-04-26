@@ -4,8 +4,10 @@ const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
     created_by: {
-        type: String,
-        required: true
+      type: String
+        // type: Schema.Types.ObjectId,
+        // ref: 'User',
+        // required: true
     },
     category: {
         type: String,

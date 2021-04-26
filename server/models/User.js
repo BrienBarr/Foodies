@@ -64,6 +64,10 @@ const UserSchema = new Schema({
     description: {
         type: String
     },
+    posts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Post'
+    }],
     // this is part of the third party authentication
     third_party_auth: [ThirdPartyProviderSchema],
     date: {

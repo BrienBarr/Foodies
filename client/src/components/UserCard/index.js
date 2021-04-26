@@ -27,13 +27,6 @@ export default function ImgMediaCard() {
     <Card className={classes.root}>
       <ImageAvatars />
       <CardActionArea>
-        {/* <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          // image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        /> */}
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             User's Name
@@ -45,17 +38,16 @@ export default function ImgMediaCard() {
           
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        {/* Link to user's posts */}
-        {/* Link to user's friends */}
-        <Button size="small" color="primary">
-          <PeopleIcon />
-        </Button>
+      {/* <CardActions> */}
+        {/* Link to see user's friends */}
+        {/* <Button size="small" color="primary"> */}
+          {/* <PeopleIcon /> */}
+        {/* </Button> */}
         {/* Link to add user as friend */}
-        <Button size="small" color="primary">
-          <PersonAddIcon />
-        </Button>
-      </CardActions>
+        {/* <Button size="small" color="primary"> */}
+          {/* <PersonAddIcon /> */}
+        {/* </Button> */}
+      {/* </CardActions> */}
     </Card>
   );
 }

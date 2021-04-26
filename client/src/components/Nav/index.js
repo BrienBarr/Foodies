@@ -1,30 +1,3 @@
-// create navbar component to be imported into app.jsimport React from "react";
-// import React from "react";
-// import Nav from "react-bootstrap/Nav";
-// import Navbar from "react-bootstrap/Navbar";
-
-
-// function Navigation() {
-//   return(
-//   <Navbar bg="light" expand="lg">
-//   <Navbar.Brand className="badge-info text-white " href="#/Home">Foodies</Navbar.Brand>
-//   <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//   <Navbar.Collapse id="basic-navbar-nav">
-//     <Nav className="ml-auto">
-//       <Nav.Link href="#/profile">Profile</Nav.Link>
-//       <Nav.Link href="#/CreatePost">New Post</Nav.Link>
-//       <Nav.Link href="#/home">Home</Nav.Link>
-//     </Nav>
-//   </Navbar.Collapse>
-// </Navbar>
-//   )
-// }
-// export default Navigation;
-
-// ///////////////////////////////////
-// new navbar from material-ui
-// //////////////////////////////////
-
 import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -39,12 +12,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-// import MailIcon from '@material-ui/icons/Mail';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import MoreIcon from '@material-ui/icons/MoreVert';
-// import CollapsableMenu from './CollapsableMenu';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Link from '@material-ui/core/Link';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -112,14 +84,16 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     hover: "red",
     visited: "grey",
-    marginRight: "10px",
-    fontSize: "1.25rem"
+    marginLeft: "10px",
+    fontSize: "1rem"
   }
 }));
 
 function handleClick(event) {
   event.preventDefault();
-  console.info('You clicked a breadcrumb.');
+  // switch (event.target.id) {
+  //   case 
+  // }
 }
 
 export default function Navigation() {
@@ -183,21 +157,13 @@ export default function Navigation() {
       onClose={handleMobileMenuClose}
     >
       {/* <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem> */}
-      <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <FastfoodIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem>
         <IconButton
           aria-label="account of current user"
@@ -227,14 +193,13 @@ export default function Navigation() {
             onClick={handleMenuOpen}
           >
             <MenuIcon />
-            {/* <CollapsableMenu /> */}
           </IconButton>
 
           <Typography className={classes.title} variant="h6" noWrap>
             Foodies
           </Typography>
 
-          <div className={classes.search}>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -246,40 +211,41 @@ export default function Navigation() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </div> */}
 
           <div>
-            {/* <Breadcrumbs aria-label="breadcrumb"> */}
-              <Link className={classes.link} href="/" onClick={handleClick}>
-                Home
-              </Link>
-              <Link className={classes.link} href="/profile" onClick={handleClick}>
-                My Profile
-              </Link>
-              <Link className={classes.link} href="/posts" onClick={handleClick}>
-                View Posts
-              </Link>
-              <Link className={classes.link} href="/create" onClick={handleClick}>
-                Create Posts
-              </Link>
-              <Link className={classes.link} href="/logout" onClick={handleClick}>
-                Logout
-              </Link>
-            {/* </Breadcrumbs> */}
+            {/* <Router>
+              <div> */}
+                  <Link className={classes.link} href="/" onClick={handleClick}>
+                    Home
+                  </Link>
+
+                  <Link className={classes.link} href="/profile" >
+                    My Profile
+                  </Link>
+
+                  <Link className={classes.link} href="/posts" onClick={handleClick}>
+                    View Posts
+                  </Link>
+
+                  <Link className={classes.link} href="/create" onClick={handleClick}>
+                    Create Posts
+                  </Link>
+
+                  <Link className={classes.link} href="/logout" onClick={handleClick}>
+                    Logout
+                  </Link>
+                {/* </div>
+            </Router> */}
           </div>
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            {/* <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <FastfoodIcon />
               </Badge>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               edge="end"
               aria-label="account of current user"

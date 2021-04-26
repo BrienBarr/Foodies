@@ -1,4 +1,5 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState } from 'react';
 import Nav from './components/Nav/';
 import Wrapper from './components/Wrapper/';
 import Footer from './components/Footer/';
@@ -16,10 +17,10 @@ function App() {
   // const { token, setToken } = useToken();
 
   // if(!token) {
-  //   return <Login setToken={setToken} />
+  //   return <Login setToken={setToken} />;
   // }
 
-return (
+  return (
     <div className="wrapper">
         <Router>
           <div>
@@ -27,12 +28,21 @@ return (
             {/* { () => { if(user) { return <Nav />; } } }             */}
             <Wrapper>
               <Switch>
-                  <Route exact path="/" component={Login} />
+                  {/* <Route exact path="/login" component={Login} /> */}
                   <Route exact path="/signup" component={SignUp} />
-                  <Route exact path="/home" component={Home} />
-                  <Route exact path="/profile" component={Profile} />
-                  <Route exact path="/posts" component={Posts} />
-                  <Route exact path="/create" component={CreatePost} />
+                  {/* <Route exact path="/home" component={Home} /> */}
+                  <Route path="/">
+                    <Home />
+                  </Route>
+                  <Route path="/profile">
+                    <Profile />
+                  </Route>
+                  <Route path="/posts">
+                    <Posts />
+                  </Route>
+                  <Route path="/create">
+                    <CreatePost />
+                  </Route>
               </Switch>
             </Wrapper>
             <Footer />

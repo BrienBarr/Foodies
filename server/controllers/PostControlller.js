@@ -1,5 +1,7 @@
 const db = require("../models");
 
+
+
 // Defining methods for the PostsController
 module.exports = {
   findAll: function(req, res) {
@@ -23,22 +25,23 @@ module.exports = {
       .then(dbModel => res.json(dbModel.comments))
       .catch(err => res.status(422).json(err));
   },
-  findByCat: function(req, res) {
-    db.Post.find({category: req.params.cat})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findByCat: function(req, res) {
+  //   let cat = req.query.cat;
+  //   db.Post.find({category: cat})
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   
-  findUserPost: function(req, res) {
-    db.Post.find({created_by: req.params.user})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  findUserPostByCat: function(req, res) {
-    db.Post.find({created_by: req.params.user, category: req.params.cat})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+  // findUserPost: function(req, res) {
+  //   db.Post.find({created_by: req.params.user})
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+  // findUserPostByCat: function(req, res) {
+  //   db.Post.find({created_by: req.params.user, category: req.params.cat})
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   create: function(req, res) {
     db.Post.create(req.body)
       .then(dbModel => res.json(dbModel))

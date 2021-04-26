@@ -12,34 +12,21 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import PeopleIcon from '@material-ui/icons/People';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImageAvatars from '../ImageAvatars';
-import { FormatAlignJustify, People } from '@material-ui/icons';
-import { grey } from '@material-ui/core/colors';
+import { People } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    backgroundColor: grey
-  }
+  },
 });
 
 export default function ImgMediaCard() {
-  const classes = useStyles({
-    alignItems: 'center',
-    justify: 'center'
-
-  });
+  const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <ImageAvatars />
       <CardActionArea>
-        {/* <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          // image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        /> */}
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
             User's Name
@@ -51,17 +38,16 @@ export default function ImgMediaCard() {
           
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        {/* Link to user's posts */}
-        {/* Link to user's friends */}
-        <Button size="small" color="primary">
-          <PeopleIcon />
-        </Button>
+      {/* <CardActions> */}
+        {/* Link to see user's friends */}
+        {/* <Button size="small" color="primary"> */}
+          {/* <PeopleIcon /> */}
+        {/* </Button> */}
         {/* Link to add user as friend */}
-        <Button size="small" color="primary">
-          <PersonAddIcon />
-        </Button>
-      </CardActions>
+        {/* <Button size="small" color="primary"> */}
+          {/* <PersonAddIcon /> */}
+        {/* </Button> */}
+      {/* </CardActions> */}
     </Card>
   );
 }

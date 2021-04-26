@@ -12,16 +12,22 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import PeopleIcon from '@material-ui/icons/People';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImageAvatars from '../ImageAvatars';
-import { People } from '@material-ui/icons';
+import { FormatAlignJustify, People } from '@material-ui/icons';
+import { grey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-  },
+    backgroundColor: grey
+  }
 });
 
 export default function ImgMediaCard() {
-  const classes = useStyles();
+  const classes = useStyles({
+    alignItems: 'center',
+    justify: 'center'
+
+  });
 
   return (
     <Card className={classes.root}>

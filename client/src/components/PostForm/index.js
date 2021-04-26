@@ -22,7 +22,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import API from '../../utils/API';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 650,
@@ -47,10 +46,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
-
-
-
 export default function PostForm() {
   const classes = useStyles();
 
@@ -74,29 +69,28 @@ export default function PostForm() {
     setCategory(event.target.value);
   };
   const handleSubmit = () => {
-    if(category === recipe){
+    console.log("button clicked")
+    if(category === "Recipe"){
       API.savePost({
-        // created_by: , need to know how to connect the current user to this field
         title: Title,
         description: Description,
-        image: Image,
+        imageURL: Image,
         ingredients: Ingredients,
         instructions: Instructions,
         link: Link 
-      }).then(console.log("data saved"))
-      .catch(err, console.log(err))
+       }).then(console.log("data saved"))
+        // .catch(err, console.log(err))
     }
     else{
       API.savePost({
-        // created_by: , need to know how to connect the current user to this field
         title: ResTitle,
         description: ResDescription,
         address: ResAddress,
-        image: ResImage,
+        imageURL: ResImage,
         body: ResReview,
         link: ResLink
       }).then(console.log("data saved"))
-      .catch(err, console.log(err))
+      // .catch(err, console.log(err))
     }
   } // need on route to post a new post
   const renderFields = (category) => {
@@ -173,7 +167,7 @@ export default function PostForm() {
             name="recipeLink"
             onChange={e => SetLink(e.target.value)}
           />
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" onClick={handleSubmit}>
             Create Post
           </Button>
         </div>;

@@ -3,13 +3,14 @@ import PostCard from '../components/PostCard';
 import API from "../utils/API"
 import Grid from '@material-ui/core/Grid';
 
-function Home(){
-  
+const View = () => {
+    
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    API.getPost() 
+    API.getPosts() // need to deside how we are collecting the user id
       .then((res) => {
+
         setPosts(res.data);
       })
       .catch((err) => console.log(err));
@@ -35,4 +36,4 @@ function Home(){
         </div>
     )
 }
- export default Home;
+ export default View;

@@ -1,22 +1,17 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
-import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import Link from '@material-ui/core/Link';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -80,35 +75,24 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  link: {
+  button: {
     color: "white",
-    hover: "red",
-    visited: "grey",
-    marginLeft: "10px",
-    fontSize: "1rem"
+    hover: "grey",
+    marginLeft: "5px",
   }
 }));
 
-function handleClick(event) {
-  event.preventDefault();
-  // switch (event.target.id) {
-  //   case 
-  // }
-}
-
-export default function Navigation() {
+function Navigation(props) {
+  const { history } = props;
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('xs'));
+  
   const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -116,9 +100,14 @@ export default function Navigation() {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClick = (pageURL) => {
+    history.push(pageURL);
     setAnchorEl(null);
     handleMobileMenuClose();
+  };
+
+  const handleButtonClick = (pageURL) => {
+    history.push(pageURL);
   };
 
   const handleMobileMenuOpen = (event) => {
@@ -134,144 +123,84 @@ export default function Navigation() {
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
-      onClose={handleMenuClose}
+      onClose={() => setAnchorEl(null)}
     >
-      <MenuItem onClick={handleMenuClose}>Home</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Posts</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Create</MenuItem>
-      <Divider />
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+    <MenuItem onClick={() => handleMenuClick('/')}>Home</MenuItem>
+    <MenuItem onClick={() => handleMenuClick('/profile')}>My Profile</MenuItem>
+    <MenuItem onClick={() => handleMenuClick('/posts')}>Posts</MenuItem>
+    <MenuItem onClick={() => handleMenuClick('/create')}>Create</MenuItem>
+    <Divider />
+    <MenuItem onClick={() => handleMenuClick('/logout')}>Logout</MenuItem>
     </Menu>
   );
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      {/* <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <FastfoodIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem> */}
-      <MenuItem>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
 
   return (
-    <div className={classes.grow}>
+    <div >
       <AppBar position="static">
         <Toolbar>
-
+        {isMobile ? (
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
-            // aria-controls={menuId}
             aria-haspopup="true"
             onClick={handleMenuOpen}
           >
             <MenuIcon />
           </IconButton>
-
+        ) : ("")}
+    
           <Typography className={classes.title} variant="h6" noWrap>
             Foodies
           </Typography>
 
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
-
-          <div>
-            {/* <Router>
-              <div> */}
-                  <Link className={classes.link} href="/" onClick={handleClick}>
+          {!isMobile ? (
+            <div>
+                  <Button className={classes.button} onClick={() => handleButtonClick('/')}>
                     Home
-                  </Link>
+                  </Button>
 
-                  <Link className={classes.link} href="/profile" >
+                  <Button className={classes.button} onClick={() => handleButtonClick('/profile')}>
                     My Profile
-                  </Link>
+                  </Button>
 
-                  <Link className={classes.link} href="/posts" onClick={handleClick}>
+                  <Button className={classes.button} onClick={() => handleButtonClick('/posts')}>
                     View Posts
-                  </Link>
+                  </Button>
 
-                  <Link className={classes.link} href="/create" onClick={handleClick}>
+                  <Button className={classes.button} onClick={() => handleButtonClick('/create')}>
                     Create Posts
-                  </Link>
+                  </Button>
 
-                  <Link className={classes.link} href="/logout" onClick={handleClick}>
+                  <Button className={classes.button} onClick={() => handleButtonClick('/logout')}>
                     Logout
-                  </Link>
-                {/* </div>
-            </Router> */}
+                  </Button>
           </div>
+          ) : ("")}
 
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <FastfoodIcon />
-              </Badge>
-            </IconButton> */}
+
+          <div>
             <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              // onClick={handleProfileMenuOpen}
+              onClick={() => handleButtonClick('/profile')}
               color="inherit"
             >
               <AccountCircle />
             </IconButton>
           </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
+
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
       {renderMenu}
     </div>
   );
 }
+
+export default withRouter(Navigation);

@@ -6,6 +6,9 @@ export default {
   createUser: function(userdata) {
     return axios.post("/api/Users", userdata);
   },
+  getUser: function(userdata) {
+    return axios.get("/api/Users", userdata)
+  },
   // Gets all posts
   getPosts: function() {
     return axios.get("/api/post");

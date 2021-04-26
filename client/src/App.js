@@ -1,5 +1,5 @@
-// import React from 'react';
-import React, { useState } from 'react';
+import React from 'react';
+// import React, { useState } from 'react';
 import Nav from './components/Nav/';
 import Wrapper from './components/Wrapper/';
 import Footer from './components/Footer/';
@@ -15,11 +15,11 @@ import Posts from './pages/Posts';
 import useToken from './useToken.js';
 
 function App() {
-  // const { token, setToken } = useToken();
+  const { token, setToken } = useToken();
 
-  // if(!token) {
-  //   return <Login setToken={setToken} />;
-  // }
+  if(!token) {
+    return <Login setToken={setToken} />;
+  }
 
   return (
     <div className="wrapper">
@@ -28,14 +28,14 @@ function App() {
             <Nav />
             {/* { () => { if(user) { return <Nav />; } } }             */}
             <Wrapper>
-              <Switch>
-                  {/* <Route exact path="/login" component={Login} /> */}
-                  <Route exact path="/signup" component={SignUp} />
-                  <Route exact path="/home" component={Home} />
-                  <Route exact path="/view" component={View} />
-                  <Route exact path="/profile" component={Profile} />
-                  <Route exact path="/posts" component={Posts} />
-                  <Route exact path="/create" component={CreatePost} />
+                <Route exact path="/signup" component={SignUp} />
+                <Route exact path="/login" component={Login} />
+              <Switch>              
+                  <Route exact path="/" render={props => <Home {...props} />} />
+                  <Route exact path="/view" render={props => <View {...props} />} />
+                  <Route exact path="/profile" render={props => <Profile {...props} />} />
+                  <Route exact path="/posts" render={props => <Posts {...props} />} />
+                  <Route exact path="/create" render={props => <CreatePost {...props} />} />
               </Switch>
             </Wrapper>
             <Footer />
@@ -43,6 +43,6 @@ function App() {
           </div>
         </Router>
     </div>
-);
+  );
 }
 export default App;

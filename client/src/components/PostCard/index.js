@@ -17,8 +17,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import Link from '@material-ui/core/Link';
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,15 +45,15 @@ const useStyles = makeStyles((theme) => ({
 export default function PostCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  // const history = useHistory();
-  
+  const history = useHistory();
 
-const handleRedirect = () => {
-  console.log("button clicked")
-    // history.push("")
+  const handleRedirect = () => {
+    console.log("button clicked")
+      history.push(`/individual/id: ${data._id}`);
 }
 
   return (
+
     <Card className={classes.root}>
       <CardHeader
       user={data.Created_by}
@@ -73,7 +72,7 @@ const handleRedirect = () => {
       />
       <CardMedia
         className={classes.media}
-        image href={data.image}
+        image={data.imageURL}// issues getting image to show up
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">

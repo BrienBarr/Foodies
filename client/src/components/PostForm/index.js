@@ -74,7 +74,7 @@ export default function PostForm() {
       API.savePost({
         title: Title,
         description: Description,
-        image: Image,
+        imageURL: Image,
         ingredients: Ingredients,
         instructions: Instructions,
         link: Link 
@@ -86,7 +86,7 @@ export default function PostForm() {
         title: ResTitle,
         description: ResDescription,
         address: ResAddress,
-        image: ResImage,
+        imageURL: ResImage,
         body: ResReview,
         link: ResLink
       }).then(console.log("data saved"))

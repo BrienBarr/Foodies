@@ -3,7 +3,7 @@ const cors = require('cors');
 const randomToken = require('random-token');
 const app = express();
 // const session = require("express-session");
-const MongoStore = require("connect-mongo");
+// const MongoStore = require("connect-mongo");
 const mongoose = require("mongoose");
 
 app.use(cors());
@@ -17,9 +17,9 @@ app.use('/login', (req, res) => {
 });
 
 //imports our passport middleware
-// const passport = require("./passport/setup");
+const passport = require("./passport/setup");
 //imports our login authentication routes
-// const auth = require("./routes/auth");
+const auth = require("./routes/auth");
 const routes = require("./routes");
 
 
@@ -40,10 +40,10 @@ mongoose.connect
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use("/api/auth", auth);
+app.use("/api/auth", auth);
 app.use(routes);
 
 

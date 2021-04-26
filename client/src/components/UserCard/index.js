@@ -13,6 +13,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ImageAvatars from '../ImageAvatars';
 import { People } from '@material-ui/icons';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -20,8 +21,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImgMediaCard() {
+export default function ImgMediaCard({data}) {
   const classes = useStyles();
+  const history = useHistory();
 
   return (
     <Card className={classes.root}>

@@ -13,7 +13,7 @@ mongoose.connect(
 
 let postsSeed = [
   {
-    created_by: "",
+    created_by: "BrienB",
     category: "recipe",
     title: "Sausage Gravy",
     body: "",
@@ -35,7 +35,7 @@ let postsSeed = [
     comments: [],
   },
   {
-    created_by: "",
+    created_by: "BrienB",
     category: "restaurant",
     title: "Greek's Pizzeria",
     body: "",

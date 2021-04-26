@@ -19,14 +19,14 @@ import Copyright from '../Copyright';
 // import './Login.css';
 
 async function loginUser(credentials) {
- return fetch('http://localhost:3000/login', {
-   method: 'POST',
-   headers: {
-     'Content-Type': 'application/json'
-   },
-   body: JSON.stringify(credentials)
- })
-   .then(data => data.json())
+ return fetch('http://localhost:3001/login', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(credentials)
+})
+  .then(data => data.json())
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -75,7 +75,8 @@ export default function Login({ setToken }) {
         <Typography component="h4" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        {/* <form className={classes.form} noValidate onSubmit={handleSubmit}> */}
+        <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"

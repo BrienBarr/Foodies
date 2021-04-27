@@ -49,7 +49,7 @@ export default function PostCard({ data }) {
 
   const handleRedirect = () => {
     console.log("button clicked")
-      history.push(`/individual/id: ${data._id}`);
+      history.push(`/posts/${data._id}`);
 }
 
   return (

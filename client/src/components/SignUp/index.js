@@ -133,7 +133,7 @@ class SignUp extends Component {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                ref={lNameRef}
+                // ref={lNameRef}
                 autoComplete="lname"
               />
             </Grid>
@@ -145,7 +145,7 @@ class SignUp extends Component {
                 id="UserName"
                 label="UserName"
                 name="userName"
-                ref={UserNameRef}
+                // ref={UserNameRef}
                 autoComplete="UserName"
               />
             </Grid>
@@ -157,7 +157,7 @@ class SignUp extends Component {
                 id="email"
                 label="Email Address"
                 name="email"
-                ref={emailRef}
+                // ref={emailRef}
                 autoComplete="email"
               />
             </Grid>
@@ -176,23 +176,6 @@ class SignUp extends Component {
                   Already have an account? Sign in
                 </Link>
               </Grid>
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onClick={this.handleSubmit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/" variant="body2">
-                Already have an account? Sign in
-              </Link>
             </Grid>
           </Grid>
         </form>

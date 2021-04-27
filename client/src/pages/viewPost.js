@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import PostCard from '../components/PostCard';
+import Login from '../components/Login'
 import API from "../utils/API"
 import Grid from '@material-ui/core/Grid';
+import useToken from '../useToken';
 
 const View = () => {
+  const { token, setToken } = useToken();
+
+  if(!token) {
+    return <Login setToken={setToken} />;
+  }
     
   const [posts, setPosts] = useState([]);
 

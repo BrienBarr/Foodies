@@ -12,7 +12,6 @@ const PostSchema = new Schema({
     },
     category: {
         type: String,
-        default: "recipe"
     },
     title: {
         type: String,

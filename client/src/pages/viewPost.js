@@ -1,39 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import PostCard from '../components/PostCard';
-import API from "../utils/API"
-import Grid from '@material-ui/core/Grid';
+import SinglePostCard from '../components/SinglePostCard';
+import API from "../utils/API";
+import { useParams } from "react-router";
 
-const View = () => {
+const viewPost = () => {
     
-  const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    API.getPosts() // need to deside how we are collecting the user id
+    // console.log("api called")
+    API.getPost(id)
       .then((res) => {
 
-        setPosts(res.data);
+        setPost(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
     return (
         <div>
-          <h2>Home</h2>
-          { posts && posts.map( (post) => {
-            return ( 
-              <Grid container direction="row" spacing={3}>
-              <Grid item xs={3}>
-                <PostCard
+          <h2>View</h2>
+                <SinglePostCard
                   key = {post.id}
-                  data={post} />
-              </Grid>
-              </Grid>
-            );
-          })
-          }
-           
+                  data={post} 
+                  />        
            
         </div>
     )
 }
- export default View;
+ export default viewPost;

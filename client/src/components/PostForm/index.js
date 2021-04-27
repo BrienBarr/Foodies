@@ -49,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
 export default function PostForm() {
   const classes = useStyles();
 
-  const [category, setCategory] = React.useState('');
   // state values for the recipe form
   const [Title, SetTitle] = React.useState('');
   const [Image, SetImage] = React.useState('');
@@ -72,6 +71,7 @@ export default function PostForm() {
     console.log("button clicked")
     if(category === "Recipe"){
       API.savePost({
+        category: "recipe",
         title: Title,
         description: Description,
         imageURL: Image,
@@ -79,10 +79,12 @@ export default function PostForm() {
         instructions: Instructions,
         link: Link 
        }).then(console.log("data saved"))
+       window.location.href = "/posts"
         // .catch(err, console.log(err))
     }
     else{
       API.savePost({
+        category: "resturant",
         title: ResTitle,
         description: ResDescription,
         address: ResAddress,
@@ -90,6 +92,7 @@ export default function PostForm() {
         body: ResReview,
         link: ResLink
       }).then(console.log("data saved"))
+      window.location.href = "/posts"
       // .catch(err, console.log(err))
     }
   } // need on route to post a new post
@@ -130,7 +133,6 @@ export default function PostForm() {
             onChange={e => SetImage(e.target.value)}
           />
           <br/>
-          <Typography>Field to insert image...</Typography>
           <br/>
           <TextField
             className={classes.textField}
@@ -219,7 +221,7 @@ export default function PostForm() {
             onChange={e => SetResImage(e.target.value)}
           />
           <br/>
-          <Typography>Field to insert image...</Typography>
+
           <br/>
           <TextField
             className={classes.textField}
@@ -274,6 +276,7 @@ export default function PostForm() {
             >
               <MenuItem value={"Recipe"}>Recipe</MenuItem>
               <MenuItem value={"Restaurant"}>Restaurant</MenuItem>
+              
             </Select>
           </FormControl>
             { renderFields(category) }

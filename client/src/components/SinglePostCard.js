@@ -1,23 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,45 +25,53 @@ const useStyles = makeStyles((theme) => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  avatar: {
-    backgroundColor: red[500],
-  },
 }));
 
 export default function PostCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  const history = useHistory();
-
-  const handleRedirect = () => {
-    console.log("button clicked")
-      history.push(`/view/${data._id}`);
-}
 
   return (
 
     <Card className={classes.root}>
-      <CardHeader 
-      title={data.created_by}
-      />
-            <CardHeader 
-      title={data.category}
-      />
+      <CardHeader
+        title={data.created_by}
+        title="Jack Tussing"
+        subheader={data.date}
+        subheader= "today"
+         />
       <CardHeader
         title={data.title}
-        subheader={data.date}
+        title= "sloppyjoes"
+
+     
       />
       <CardMedia
         className={classes.media}
-        image={data.imageURL}// issues getting image to show up
+        image={data.imageURL}
       />
       <CardContent>
+      <CardHeader
+        title="Description"
+         />
         <Typography variant="body2" color="textSecondary" component="p">
           {data.description}
+          {/* "lalalalalala" */}
         </Typography>
-        <Button onClick={handleRedirect}>
-          More
-        </Button>
+        <CardHeader
+        title="Ingredients"
+         />
+        <Typography variant="body2" color="textSecondary" component="p">
+          {data.ingredients}
+          {/* Ingredients */}
+        </Typography>
+        <CardHeader
+        title="Directions"
+         />
+        <Typography variant="body2" color="textSecondary" component="p">
+          {data.directions}
+          {/* directions */}
+        </Typography>
       </CardContent>
     </Card>
   );

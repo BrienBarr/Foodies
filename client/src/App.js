@@ -10,9 +10,10 @@ import './App.css';
 import Login from './components/Login/';
 import SignUp from './components/SignUp/';
 import Home from './pages/home';
-import View from "./pages/viewPost"
+import ViewPost from "./pages/viewPost"
 import Posts from './pages/Posts';
 import useToken from './useToken.js';
+
 
 function App() {
   const { token, setToken } = useToken();
@@ -20,6 +21,7 @@ function App() {
   if(!token) {
     return <Login setToken={setToken} />;
   }
+ 
 
   return (
     <div className="wrapper">
@@ -32,7 +34,7 @@ function App() {
                 <Route exact path="/login" component={Login} />
               <Switch>              
                   <Route exact path="/" render={props => <Home {...props} />} />
-                  <Route exact path="/view" render={props => <View {...props} />} />
+                  <Route exact path="/view/:id" render={props => <ViewPost {...props} />} />
                   <Route exact path="/profile" render={props => <Profile {...props} />} />
                   <Route exact path="/posts" render={props => <Posts {...props} />} />
                   <Route exact path="/create" render={props => <CreatePost {...props} />} />

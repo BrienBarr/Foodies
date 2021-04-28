@@ -17,7 +17,7 @@ const Post = () => {
   }, []);
 
     return (
-        <div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <h2>Posts</h2>
           { posts && posts.map( (post) => {
             return ( 

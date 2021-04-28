@@ -1,9 +1,7 @@
 .wrapper {
     padding: 20px;
-    display: flex;
-    justify-content: center;
-    direction: row;
+    
 }
 body {
-background-color: rgb(175, 174, 174);
+background-color: rgb(252, 252, 252);
 } 

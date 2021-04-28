@@ -73,7 +73,8 @@ export default function Login() {
     API.login(user)
     .then((userdata) => {
       setToken(userdata);
-      history.push("/");
+      // history.push("/");
+      window.location.href = "/";
     })
     
     console.log(user);

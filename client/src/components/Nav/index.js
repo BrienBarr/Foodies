@@ -12,6 +12,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { withRouter } from 'react-router-dom';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import API from '../../utils/API';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -110,6 +111,11 @@ function Navigation(props) {
     history.push(pageURL);
   };
 
+  const handleLogoutClick = () => {
+    API.logout();
+    window.location.href = "/";
+  };
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -130,7 +136,7 @@ function Navigation(props) {
     <MenuItem onClick={() => handleMenuClick('/posts')}>Posts</MenuItem>
     <MenuItem onClick={() => handleMenuClick('/create')}>Create</MenuItem>
     <Divider />
-    <MenuItem onClick={() => handleMenuClick('/logout')}>Logout</MenuItem>
+    <MenuItem onClick={() => handleLogoutClick()}>Logout</MenuItem>
     </Menu>
   );
 
@@ -175,7 +181,7 @@ function Navigation(props) {
                     Create Posts
                   </Button>
 
-                  <Button className={classes.button} onClick={() => handleButtonClick('/logout')}>
+                  <Button className={classes.button} onClick={() => handleLogoutClick()}>
                     Logout
                   </Button>
           </div>

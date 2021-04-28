@@ -75,7 +75,7 @@ export default function PostForm() {
     console.log("button clicked")
     if(category === "Recipe"){
       API.savePost({
-        Created_by: token.message.email,
+        Created_by: token.data.message.email,
         category: "recipe",
         title: Title,
         description: Description,
@@ -89,7 +89,7 @@ export default function PostForm() {
     }
     else{
       API.savePost({
-        Created_by: token.message.email,
+        Created_by: token.data.message.email,
         category: "resturant",
         title: ResTitle,
         description: ResDescription,

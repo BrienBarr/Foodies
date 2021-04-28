@@ -12,20 +12,17 @@ import SignUp from './components/SignUp/';
 import Home from './pages/home';
 import ViewPost from "./pages/viewPost"
 import Posts from './pages/Posts';
-// import useToken from './useToken';
+import useToken from './useToken';
 
 
 function App() {
+  const { token } = useToken();
   return (
     <div className="wrapper">
         <Router>
           <div>
-            <Nav />
-            {/* { () => { 
-              if(!token) {
-                return <Nav />;
-              } 
-            } }             */}
+            {/* <Nav /> */}
+            { (token) ? (<Nav />) : null }            
             <Wrapper>
                 
               <Switch>
@@ -39,12 +36,8 @@ function App() {
                   <Route exact path="/create" render={props => <CreatePost {...props} />} />
               </Switch>
             </Wrapper>
-            {/* { () => { 
-              if(!token) {
-                return <Footer />;
-              } 
-            } }  */}
-            <Footer />
+            { (token) ? (<Footer />) : null }
+            {/* <Footer /> */}
           </div>
         </Router>
     </div>

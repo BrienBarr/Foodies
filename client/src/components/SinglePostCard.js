@@ -30,25 +30,26 @@ const useStyles = makeStyles((theme) => ({
 export default function PostCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  console.log(data);
   return (
 
     <Card className={classes.root}>
       <CardHeader
         title={data.created_by}
-        title="Jack Tussing"
+        // title="Jack Tussing"
         subheader={data.date}
-        subheader= "today"
+        // subheader= "today"
          />
       <CardHeader
         title={data.title}
-        title= "sloppyjoes"
-
-     
+        // title= "sloppyjoes"
       />
       <CardMedia
         className={classes.media}
+        component="img"
         image={data.imageURL}
+        alt={data.title}
+        title={data.title}
       />
       <CardContent>
       <CardHeader

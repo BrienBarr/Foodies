@@ -58,8 +58,10 @@ exports.signup = (req, res, next) => {
           .then(response => {
             // delete response.password;
             res.status(200).json({
-              message: response,
-              success: true
+              data: {
+                message: response,
+                success: true
+              }
             })
           })
           .catch(err => {
@@ -145,4 +147,9 @@ exports.signin = (req, res) => {
   .catch(err => {
     res.status(500).json({ erros: err });
   });
+}
+
+exports.logout = (req, res) => {
+  console.log("logging out");
+  res.redirect("/");
 }

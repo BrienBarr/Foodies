@@ -10,6 +10,10 @@ export default {
     console.log(userdata);
     return axios.post("/login", userdata)
   },
+  logout: function() {
+    sessionStorage.clear("token");
+    return axios.post("/logout");
+  },
   getUser: function(email) {
     return axios.get("/api/User/" + email)
   },

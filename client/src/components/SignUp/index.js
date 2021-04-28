@@ -80,10 +80,10 @@ function SignUp (){
     API.createUser(userdata)
     .then( (res) => {
       //console.log(res);
-      const udata= res.data;
-    
+      const udata = res.data;
       setToken(udata);
-      history.push("/");
+      // history.push("/");
+      window.location.href = "/";
     })
   };
 
@@ -126,7 +126,7 @@ function SignUp (){
           </Typography>
           <form styles={styles.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={8}>
                   <TextField
                     autoComplete="uName"
                     name="userName"
@@ -140,6 +140,7 @@ function SignUp (){
                     onChange={handleInputChange}
                   />
                 </Grid>
+                <Grid></Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
@@ -215,6 +216,7 @@ function SignUp (){
               variant="contained"
               color="primary"
               style={styles.submit}
+              onClick={handleSubmit}
             >
               Sign Up
             </Button>

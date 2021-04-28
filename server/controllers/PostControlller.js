@@ -10,6 +10,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findAllWhere: function(req, res) {
+    db.Post.find({created_by: req.params.email})
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findById: function(req, res) {
     db.Post.findOne({_id: req.params.id})
       .then(dbModel => res.json(dbModel))

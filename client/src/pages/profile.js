@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import UserCard from '../components/UserCard';
 import API from "../utils/API"
+import useToken from "../useToken"
 
 const Profile = () => {
     
   const [User, setUser] = useState([]);
+  const {Token} = useToken;
 
   useEffect(() => {
     console.log("Profile")
-    API.getUser("tussing40@gmail.com") // not the right api route but close lookiong for logged in email
+    API.getUser(Token.message.email) // i think this is correct
       .then((res) => {
 
         setUser(res.data);

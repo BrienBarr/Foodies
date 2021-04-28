@@ -21,6 +21,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import API from '../../utils/API';
+import useToken from "../useToken"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +49,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PostForm() {
   const classes = useStyles();
+  const {Token} = useToken;
 
+
+  const [category, setCategory] = React.useState('');
   // state values for the recipe form
   const [Title, SetTitle] = React.useState('');
   const [Image, SetImage] = React.useState('');

@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import PostCard from '../components/PostCard';
 import API from "../utils/API"
 import Grid from '@material-ui/core/Grid';
+import useToken from "../useToken"
 
 function Home(){
   
   const [posts, setPosts] = useState([]);
+  const {Token} = useToken;
+
 
   useEffect(() => {
-    API.getPost() 
+    API.getUserPost(Token.message.email) // i think this is correct
       .then((res) => {
         setPosts(res.data);
       })

@@ -21,6 +21,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import API from '../../utils/API';
+import useToken from "../../useToken";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +49,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PostForm() {
   const classes = useStyles();
+  const {token} = useToken();
 
+
+  const [category, setCategory] = React.useState('');
   // state values for the recipe form
   const [Title, SetTitle] = React.useState('');
   const [Image, SetImage] = React.useState('');
@@ -71,6 +75,7 @@ export default function PostForm() {
     console.log("button clicked")
     if(category === "Recipe"){
       API.savePost({
+        Created_by: token.message.email,
         category: "recipe",
         title: Title,
         description: Description,
@@ -84,6 +89,7 @@ export default function PostForm() {
     }
     else{
       API.savePost({
+        Created_by: token.message.email,
         category: "resturant",
         title: ResTitle,
         description: ResDescription,

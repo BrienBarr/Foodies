@@ -3,7 +3,7 @@ import Login from '../components/Login'
 import PostCard from '../components/PostCard';
 import API from "../utils/API"
 import Grid from '@material-ui/core/Grid';
-import useToken from '../useToken';
+import useToken from "../useToken";
 
 function Home(){
   console.log('home');
@@ -15,9 +15,11 @@ function Home(){
   }
   
   const [posts, setPosts] = useState([]);
+  const {token} = useToken();
+
 
   useEffect(() => {
-    API.getPost() 
+    API.getUserPost(token.message.email) // i think this is correct
       .then((res) => {
         setPosts(res.data);
       })
@@ -29,13 +31,9 @@ function Home(){
           <h2>Home</h2>
           { posts && posts.map( (post) => {
             return ( 
-              <Grid container direction="row" spacing={3}>
-              <Grid item xs={3}>
                 <PostCard
                   key = {post.id}
                   data={post} />
-              </Grid>
-              </Grid>
             );
           })
           }

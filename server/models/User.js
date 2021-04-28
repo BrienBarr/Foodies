@@ -64,14 +64,14 @@ const UserSchema = new Schema({
     description: {
         type: String
     },
-    post: {
-        type: Schema.Types.ObjectId,
-        ref: "Post"
-    },
-    comments: {
-        type: Schema.Types.ObjectId,
-        ref: "Comments"
-    },
+    // post: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Post"
+    // },
+    // comments: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Comments"
+    // },
     // this is part of the third party authentication
     third_party_auth: [ThirdPartyProviderSchema],
     date: {

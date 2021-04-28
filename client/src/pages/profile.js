@@ -10,7 +10,7 @@ const Profile = () => {
 
   useEffect(() => {
     console.log("Profile")
-    API.getUser(token.message.email)
+    API.getUser(token.data.message.email)
       .then((res) => {
 
         setUser(res.data);

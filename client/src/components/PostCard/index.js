@@ -57,7 +57,7 @@ export default function PostCard({ data }) {
 
     <Card className={classes.root}>
       <CardHeader 
-      title={token.message.userName}
+      title={token.data.message.userName}
       />
             <CardHeader 
       title={data.category}

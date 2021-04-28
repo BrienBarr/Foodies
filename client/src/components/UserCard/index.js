@@ -36,7 +36,7 @@ export default function ImgMediaCard({data}) {
             {data.email}
           </Typography>
           <Typography>
-            {data.username}
+            {data.userName}
           </Typography> 
         </CardContent>
       </CardActionArea>

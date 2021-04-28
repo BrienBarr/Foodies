@@ -4,9 +4,16 @@ import axios from 'axios';
 
 export default {
   createUser: function(userdata) {
-    return axios.post("/api/signup", userdata);
+    return axios.post("/signup", userdata);
   },
-
+  login: function(userdata) {
+    console.log(userdata);
+    return axios.post("/login", userdata)
+  },
+  logout: function() {
+    sessionStorage.clear("token");
+    return axios.post("/logout");
+  },
   getUser: function(email) {
     return axios.get("/api/User/" + email)
   },

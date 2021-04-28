@@ -16,20 +16,24 @@ import Container from '@material-ui/core/Container';
 import Copyright from '../Copyright';
 import useToken from '../../useToken';
 import { useHistory } from "react-router-dom";
+import API from '../../utils/API';
 
 // import '.';
 // import './Login.css';
 
-async function loginUser(credentials) {
- return fetch('http://localhost:3000/api/login', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(credentials)
-})
-  .then(data => data.json())
-}
+// async function loginUser(credentials) {
+//  return fetch('http://localhost:3000/login', {
+//   method: 'POST',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   body: JSON.stringify(credentials)
+// })
+//   .then(userdata => {
+//     setToken(userdata);
+//     history.push("/");
+//   })
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,15 +63,21 @@ export default function Login() {
 
   const classes = useStyles();
 
-  const handleSubmit = async e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    const user = await loginUser({
+    const user = {
       email: email,
       password: password
-    });
-    setToken(user);
-    history.push("/");
-    // console.log(user);
+    };
+    // loginUser(user);
+    API.login(user)
+    .then((userdata) => {
+      setToken(userdata);
+      // history.push("/");
+      window.location.href = "/";
+    })
+    
+    console.log(user);
   }
 
   return (

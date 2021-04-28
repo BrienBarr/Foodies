@@ -54,8 +54,8 @@ app.use(express.json());
 // app.use(passport.session());
 
 //routes middleware
-app.use('/api', authRoutes);
-// app.use("/api/auth", auth);
+// app.use('/api', authRoutes);
+app.use('/', authRoutes);
 app.use(routes);
 
 

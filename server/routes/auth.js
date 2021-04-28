@@ -19,9 +19,10 @@ const router = express.Router();
 //     })(req, res, next);
 // });
 
-const { signup, signin } = require('../controllers/auth');
+const { signup, signin, logout } = require('../controllers/auth');
 
 router.post('/signup', signup);
 router.post('/login', signin);
+router.post('/logout', logout);
 
 module.exports = router;

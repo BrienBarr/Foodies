@@ -11,6 +11,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAllWhere: function(req, res) {
+    console.log(req.params.email);
     db.Post.find({created_by: req.params.email})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))

@@ -16,20 +16,18 @@ import useToken from './useToken';
 
 
 function App() {
+  const { token } = useToken();
   return (
     <div className="wrapper">
         <Router>
           <div>
             {/* <Nav /> */}
-            {/* { () => { 
-              if(!token) {
-                return <Nav />;
-              } 
-            } }             */}
+            { (token) ? (<Nav />) : null }            
             <Wrapper>
-                <Route exact path="/signup" component={SignUp} />
-                <Route exact path="/login" component={Login} />
-              <Switch>              
+                
+              <Switch>
+                  <Route exact path="/signup" component={SignUp} />
+                  <Route exact path="/login" component={Login} />              
                   <Route exact path="/" render={props => <Home {...props} />} />
                   <Route exact path="/view/:id" render={props => <ViewPost {...props} />} />
                   <Route exact path="/profile" render={props => <Profile {...props} />} />
@@ -38,11 +36,7 @@ function App() {
                   <Route exact path="/create" render={props => <CreatePost {...props} />} />
               </Switch>
             </Wrapper>
-            {/* { () => { 
-              if(!token) {
-                return <Footer />;
-              } 
-            } }  */}
+            { (token) ? (<Footer />) : null }
             {/* <Footer /> */}
           </div>
         </Router>

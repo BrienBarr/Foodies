@@ -6,18 +6,20 @@ import Grid from '@material-ui/core/Grid';
 import useToken from "../useToken";
 
 function Home(){
-  const { token, setToken } = useToken();
+  console.log('home');
+  const { token } = useToken();
 
+  console.log(token);
   if(!token) {
     return <Login />;
   }
   
   const [posts, setPosts] = useState([]);
-  const {token} = useToken();
 
 
   useEffect(() => {
-    API.getUserPost(token.message.email) // i think this is correct
+    // console.log(token.data.message.email);
+    API.getUserPost(token.data.message.email) // i think this is correct
       .then((res) => {
         setPosts(res.data);
       })
@@ -30,7 +32,7 @@ function Home(){
           { posts && posts.map( (post) => {
             return ( 
                 <PostCard
-                  key = {post.id}
+                  key = {post._id}
                   data={post} />
             );
           })

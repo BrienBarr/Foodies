@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PostForm() {
   const classes = useStyles();
-  const {Token} = useToken();
+  const {token} = useToken();
 
 
   const [category, setCategory] = React.useState('');
@@ -75,7 +75,7 @@ export default function PostForm() {
     console.log("button clicked")
     if(category === "Recipe"){
       API.savePost({
-        Created_by: Token.message.email,
+        Created_by: token.message.email,
         category: "recipe",
         title: Title,
         description: Description,
@@ -89,7 +89,7 @@ export default function PostForm() {
     }
     else{
       API.savePost({
-        Created_by: Token.message.email,
+        Created_by: token.message.email,
         category: "resturant",
         title: ResTitle,
         description: ResDescription,

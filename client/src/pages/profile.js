@@ -6,11 +6,11 @@ import useToken from "../useToken"
 const Profile = () => {
     
   const [User, setUser] = useState([]);
-  const {Token} = useToken();
+  const {token} = useToken();
 
   useEffect(() => {
     console.log("Profile")
-    API.getUser(Token.message.email)
+    API.getUser(token.message.email)
       .then((res) => {
 
         setUser(res.data);

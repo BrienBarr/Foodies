@@ -7,11 +7,11 @@ import useToken from "../useToken";
 function Home(){
   
   const [posts, setPosts] = useState([]);
-  const {Token} = useToken();
+  const {token} = useToken();
 
 
   useEffect(() => {
-    API.getUserPost(Token.message.email) // i think this is correct
+    API.getUserPost(token.message.email) // i think this is correct
       .then((res) => {
         setPosts(res.data);
       })

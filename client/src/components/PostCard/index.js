@@ -47,7 +47,7 @@ export default function PostCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const history = useHistory();
-  const {Token} = useToken();
+  const {token} = useToken();
   const handleRedirect = () => {
     console.log("button clicked")
       history.push(`/view/${data._id}`);
@@ -57,7 +57,7 @@ export default function PostCard({ data }) {
 
     <Card className={classes.root}>
       <CardHeader 
-      // title={Token.message.userName}
+      title={token.message.userName}
       />
             <CardHeader 
       title={data.category}

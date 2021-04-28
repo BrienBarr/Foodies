@@ -19,7 +19,7 @@ const viewPost = () => {
   }, []);
 
     return (
-        <div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <h2>View</h2>
                 <SinglePostCard
                   key = {post.id}

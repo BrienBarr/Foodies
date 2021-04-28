@@ -27,7 +27,7 @@ function Home(){
   }, []);
 
     return (
-        <div>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <h2>Home</h2>
           { posts && posts.map( (post) => {
             return ( 

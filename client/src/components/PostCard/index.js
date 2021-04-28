@@ -18,6 +18,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { useHistory } from "react-router-dom";
+import useToken from "../../useToken";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +47,7 @@ export default function PostCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const history = useHistory();
-
+  const {token} = useToken();
   const handleRedirect = () => {
     console.log("button clicked")
       history.push(`/view/${data._id}`);
@@ -56,7 +57,7 @@ export default function PostCard({ data }) {
 
     <Card className={classes.root}>
       <CardHeader 
-      title={data.created_by}
+      title={token.message.userName}
       />
             <CardHeader 
       title={data.category}

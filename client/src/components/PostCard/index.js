@@ -22,7 +22,7 @@ import useToken from "../../useToken";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 500,
+    maxWidth: 345,
   },
   media: {
     height: 0,

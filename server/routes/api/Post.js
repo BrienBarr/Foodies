@@ -7,10 +7,10 @@ router
   .get(postsController.findAll)
   .post(postsController.create);
 
-  // Matches with "/api/post/email"
+//   // Matches with "/api/post/email"
 router
   .route("/:email")
-  .get(postsController.findAllWhere)
+.get(postsController.findAllWhere)
 
 // Matches with "/api/post/:id"
 router

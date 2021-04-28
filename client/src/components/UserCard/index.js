@@ -27,29 +27,19 @@ export default function ImgMediaCard({data}) {
 
   return (
     <Card className={classes.root}>
-      <ImageAvatars />
       <CardActionArea>
         <CardContent>
+         <Typography gutterBottom variant="h5" component="h2">
+            {data.first_name} {data.last_name}
+          </Typography> 
           <Typography gutterBottom variant="h5" component="h2">
-            User's Name
+            {data.email}
           </Typography>
-          <Typography>User's Foodies username</Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            User headline
-          </Typography>
-          
+          <Typography>
+            {data.username}
+          </Typography> 
         </CardContent>
       </CardActionArea>
-      {/* <CardActions> */}
-        {/* Link to see user's friends */}
-        {/* <Button size="small" color="primary"> */}
-          {/* <PeopleIcon /> */}
-        {/* </Button> */}
-        {/* Link to add user as friend */}
-        {/* <Button size="small" color="primary"> */}
-          {/* <PersonAddIcon /> */}
-        {/* </Button> */}
-      {/* </CardActions> */}
     </Card>
   );
 }

@@ -9,7 +9,7 @@ function Home(){
   const { token, setToken } = useToken();
 
   if(!token) {
-    return <Login setToken={setToken} />;
+    return <Login />;
   }
   
   const [posts, setPosts] = useState([]);

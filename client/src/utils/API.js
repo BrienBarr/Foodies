@@ -4,10 +4,11 @@ import axios from 'axios';
 
 export default {
   createUser: function(userdata) {
-    return axios.post("/api/Users", userdata);
+    return axios.post("/api/signup", userdata);
   },
-  getUser: function(userdata) {
-    return axios.get("/api/Users", userdata)
+
+  getUser: function(email) {
+    return axios.get("/api/User/" + email)
   },
   // Gets all posts
   getPosts: function() {
@@ -15,7 +16,7 @@ export default {
   },
   // Gets the post with the given id
   getPost: function(id) {
-    return axios.get("/api/post/" + id);
+    return axios.get("/api/post/" + id); ///api/post/:id
   },
   // Saves a post to the database
   savePost: function(postData) {

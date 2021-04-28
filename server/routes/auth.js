@@ -22,6 +22,6 @@ const router = express.Router();
 const { signup, signin } = require('../controllers/auth');
 
 router.post('/signup', signup);
-router.post('/signin', signin);
+router.post('/login', signin);
 
 module.exports = router;

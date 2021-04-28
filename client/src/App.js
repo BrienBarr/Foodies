@@ -5,30 +5,27 @@ import Wrapper from './components/Wrapper/';
 import Footer from './components/Footer/';
 import Profile from './pages/profile';
 import CreatePost from "./pages/CreatePost";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useParams } from 'react-router-dom';
 import './App.css';
 import Login from './components/Login/';
 import SignUp from './components/SignUp/';
 import Home from './pages/home';
 import ViewPost from "./pages/viewPost"
 import Posts from './pages/Posts';
-import useToken from './useToken.js';
+import useToken from './useToken';
 
 
 function App() {
-  const { token, setToken } = useToken();
-
-  if(!token) {
-    return <Login setToken={setToken} />;
-  }
- 
-
   return (
     <div className="wrapper">
         <Router>
           <div>
-            <Nav />
-            {/* { () => { if(user) { return <Nav />; } } }             */}
+            {/* <Nav /> */}
+            {/* { () => { 
+              if(!token) {
+                return <Nav />;
+              } 
+            } }             */}
             <Wrapper>
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/login" component={Login} />
@@ -37,11 +34,16 @@ function App() {
                   <Route exact path="/view/:id" render={props => <ViewPost {...props} />} />
                   <Route exact path="/profile" render={props => <Profile {...props} />} />
                   <Route exact path="/posts" render={props => <Posts {...props} />} />
+                  
                   <Route exact path="/create" render={props => <CreatePost {...props} />} />
               </Switch>
             </Wrapper>
-            <Footer />
-            {/* { () => { if(user) { return <Footer />; } } }    */}
+            {/* { () => { 
+              if(!token) {
+                return <Footer />;
+              } 
+            } }  */}
+            {/* <Footer /> */}
           </div>
         </Router>
     </div>

@@ -56,9 +56,10 @@ exports.signup = (req, res, next) => {
           user.password = hash;
           user.save()
           .then(response => {
+            // delete response.password;
             res.status(200).json({
-              success: true,
-              result: response
+              message: response,
+              success: true
             })
           })
           .catch(err => {
@@ -78,6 +79,7 @@ exports.signup = (req, res, next) => {
 }
 
 exports.signin = (req, res) => {
+  console.log("signin attempt");
   let { email, password } = req.body;
   let errors = [];
   if (!email) {
@@ -98,14 +100,16 @@ exports.signin = (req, res) => {
         errors: [{ user: "not found" }],
       });
     } else {
+      console.log("user found")
       bcrypt.compare(password, user.password)
       .then(isMatch => {
-        
         if (!isMatch) {
           return res.status(400).json({ 
             errors: [{ password:"incorrect" }] 
           });
         }
+
+
         let access_token = createJWT(
           user.email,
           user._id,
@@ -116,11 +120,18 @@ exports.signin = (req, res) => {
             res.status(500).json({ erros: err });
           }
           if (decoded) {
-            return res.status(200).json({
-              success: true,
-              token: access_token,
-              message: user
-            });
+            // delete user.password;
+            console.log(user.password);
+            // if(!user.password){
+
+              return res.status(200).json({
+                success: true,
+                token: access_token,
+                message: user
+              });
+
+            // }
+            
           }
         });
       })

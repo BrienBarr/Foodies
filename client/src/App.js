@@ -12,7 +12,7 @@ import SignUp from './components/SignUp/';
 import Home from './pages/home';
 import ViewPost from "./pages/viewPost"
 import Posts from './pages/Posts';
-import useToken from './useToken';
+// import useToken from './useToken';
 
 
 function App() {
@@ -20,16 +20,17 @@ function App() {
     <div className="wrapper">
         <Router>
           <div>
-            {/* <Nav /> */}
+            <Nav />
             {/* { () => { 
               if(!token) {
                 return <Nav />;
               } 
             } }             */}
             <Wrapper>
-                <Route exact path="/signup" component={SignUp} />
-                <Route exact path="/login" component={Login} />
-              <Switch>              
+                
+              <Switch>
+                  <Route exact path="/signup" component={SignUp} />
+                  <Route exact path="/login" component={Login} />              
                   <Route exact path="/" render={props => <Home {...props} />} />
                   <Route exact path="/view/:id" render={props => <ViewPost {...props} />} />
                   <Route exact path="/profile" render={props => <Profile {...props} />} />
@@ -43,7 +44,7 @@ function App() {
                 return <Footer />;
               } 
             } }  */}
-            {/* <Footer /> */}
+            <Footer />
           </div>
         </Router>
     </div>

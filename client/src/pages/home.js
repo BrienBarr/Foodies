@@ -6,8 +6,10 @@ import Grid from '@material-ui/core/Grid';
 import useToken from '../useToken';
 
 function Home(){
-  const { token, setToken } = useToken();
+  console.log('home');
+  const { token } = useToken();
 
+  console.log(token);
   if(!token) {
     return <Login />;
   }

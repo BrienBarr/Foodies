@@ -75,6 +75,57 @@ export default function PostCard({ data }) {
           {/* directions */}
         </Typography>
       </CardContent>
-    </Card>
+      </div>
+    }
+    else{
+      <div>
+      <CardContent>
+      <CardHeader
+        title="address"
+         />
+        <Typography variant="body2" color="textSecondary" component="p">
+          {data.address}
+
+        </Typography>
+        <CardHeader
+        title="review"
+         />
+        <Typography variant="body2" color="textSecondary" component="p">
+          {data.review}
+
+        </Typography>
+        <CardHeader
+        title="link"
+         />
+        <Typography variant="body2" color="textSecondary" component="p">
+          {data.link}
+        </Typography>
+      </CardContent>
+      </div>
+    }
+  }
+     return (
+
+      <Card className={classes.root}>
+        <CardHeader
+          title={data.created_by}
+  
+          subheader={data.date}
+  
+           />
+        <CardHeader
+          title={data.title}
+        />
+        <CardMedia
+          className={classes.media}
+          component="img"
+          image={data.imageURL}
+          alt={data.title}
+          title={data.title}
+        />
+        <CardContent>
+        { renderFields(category) }
+        </CardContent>
+      </Card>
   );
 }

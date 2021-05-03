@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 500,
+    minWidth: 200
   },
   media: {
     height: 0,
@@ -30,11 +31,27 @@ const useStyles = makeStyles((theme) => ({
 export default function PostCard({ data }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-  console.log(data);
-  
-  const renderFields = (category) => {
-    if(catergory === data.category){
-      <div>
+  // console.log(data);
+  return (
+
+    <Card className={classes.root}>
+      <CardHeader
+        title={data.created_by.userName}
+        // title="Jack Tussing"
+        subheader={data.date}
+        // subheader= "today"
+         />
+      <CardHeader
+        title={data.title}
+        // title= "sloppyjoes"
+      />
+      <CardMedia
+        className={classes.media}
+        component="img"
+        image={data.imageURL}
+        alt={data.title}
+        title={data.title}
+      />
       <CardContent>
       <CardHeader
         title="Description"

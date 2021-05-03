@@ -15,25 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Copyright from '../Copyright';
 import useToken from '../../useToken';
-import { useHistory } from "react-router-dom";
 import API from '../../utils/API';
-
-// import '.';
-// import './Login.css';
-
-// async function loginUser(credentials) {
-//  return fetch('http://localhost:3000/login', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify(credentials)
-// })
-//   .then(userdata => {
-//     setToken(userdata);
-//     history.push("/");
-//   })
-// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,7 +41,6 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const { setToken } = useToken(); 
-  const history = useHistory();
 
   const classes = useStyles();
 
@@ -73,7 +54,6 @@ export default function Login() {
     API.login(user)
     .then((userdata) => {
       setToken(userdata);
-      // history.push("/");
       window.location.href = "/";
     })
     
@@ -132,9 +112,6 @@ export default function Login() {
           </Button>
           <Grid container>
             <Grid item xs>
-              {/* <Link href="#" variant="body2">
-                Forgot password?
-              </Link> */}
             </Grid>
             <Grid item>
               <Link href="/signup" variant="body2" align="center">

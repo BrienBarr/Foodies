@@ -35,8 +35,9 @@ function App() {
                   
                   <Route exact path="/create" render={props => <CreatePost {...props} />} />
               </Switch>
+              { (token) ? (<Footer />) : null }
             </Wrapper>
-            { (token) ? (<Footer />) : null }
+            
             {/* <Footer /> */}
           </div>
         </Router>

@@ -64,10 +64,10 @@ const UserSchema = new Schema({
     description: {
         type: String
     },
-    // post: {
+    // posts: [{
     //     type: Schema.Types.ObjectId,
     //     ref: "Post"
-    // },
+    // }],
     // comments: {
     //     type: Schema.Types.ObjectId,
     //     ref: "Comments"

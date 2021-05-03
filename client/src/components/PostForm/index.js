@@ -75,7 +75,7 @@ export default function PostForm() {
     console.log("button clicked")
     if(category === "Recipe"){
       API.savePost({
-        Created_by: token.data.message.email,
+        created_by: token.data.message._id,
         category: "recipe",
         title: Title,
         description: Description,
@@ -84,12 +84,12 @@ export default function PostForm() {
         instructions: Instructions,
         link: Link 
        }).then(console.log("data saved"))
-       window.location.href = "/posts"
+       window.location.href = "/"
         // .catch(err, console.log(err))
     }
     else{
       API.savePost({
-        Created_by: token.data.message.email,
+        created_by: token.data.message._id,
         category: "resturant",
         title: ResTitle,
         description: ResDescription,
@@ -98,10 +98,11 @@ export default function PostForm() {
         body: ResReview,
         link: ResLink
       }).then(console.log("data saved"))
-      window.location.href = "/posts"
+      window.location.href = "/"
       // .catch(err, console.log(err))
     }
   } // need on route to post a new post
+  
   const renderFields = (category) => {
     switch(category) {
       case "Recipe":

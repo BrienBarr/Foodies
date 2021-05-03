@@ -23,10 +23,11 @@ export default {
   },
   // Gets the post with the given id
   getPost: function(id) {
-    return axios.get("/api/post/" + id); ///api/post/:id
+    return axios.get("/api/post/post/" + id); ///api/post/:id
   },
-  getUserPost: function(email) {
-    return axios.get("/api/post/" + email); ///api/post/:email added to take care of the get post by user route
+  getUserPost: function(user) {
+    console.log("User is: " + user)
+    return axios.get("/api/post/" + user); ///api/post/:user added to take care of the get post by user route
   },  
   // Saves a post to the database
   savePost: function(postData) {

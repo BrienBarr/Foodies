@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
     created_by: {
-        type: String
-    },
+      type: Schema.Types.ObjectId,
+      ref: "users"
+  },
     description: {
         type: String
     },

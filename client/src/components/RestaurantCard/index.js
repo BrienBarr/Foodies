@@ -9,41 +9,31 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 500,
+    maxWidth: 900,
     minWidth: 200
   },
   media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
+    paddingLeft: 10,
+    maxWidth: 500
+  }
 }));
 
-export default function PostCard({ data }) {
+export default function RestaurantCard({ data }) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-  // console.log(data);
+  console.log(data);
+  if (data.length === 0){
+    return <div />
+  }
+  
   return (
 
     <Card className={classes.root}>
       <CardHeader
         title={data.created_by.userName}
-        // title="Jack Tussing"
         subheader={data.date}
-        // subheader= "today"
          />
       <CardHeader
         title={data.title}
-        // title= "sloppyjoes"
       />
       <CardMedia
         className={classes.media}
@@ -58,21 +48,24 @@ export default function PostCard({ data }) {
          />
         <Typography variant="body2" color="textSecondary" component="p">
           {data.description}
-          {/* "lalalalalala" */}
         </Typography>
         <CardHeader
-        title="Ingredients"
+        title="Address"
          />
         <Typography variant="body2" color="textSecondary" component="p">
-          {data.ingredients}
-          {/* Ingredients */}
+          {data.address}
         </Typography>
         <CardHeader
-        title="Directions"
+        title="Review"
          />
         <Typography variant="body2" color="textSecondary" component="p">
-          {data.directions}
-          {/* directions */}
+          {data.body}
+        </Typography>
+        <CardHeader
+        title="Website"
+         />
+        <Typography variant="body2" color="textSecondary" component="p">
+          <a href={data.link} target="_blank">{data.link}</a>
         </Typography>
       </CardContent>
     </Card>

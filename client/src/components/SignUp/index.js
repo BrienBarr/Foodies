@@ -15,57 +15,34 @@ import Container from '@material-ui/core/Container';
 import Copyright from '../Copyright';
 import API from '../../utils/API';
 import useToken from '../../useToken';
-import { useHistory } from "react-router-dom";
 
-// const useStyles = makeStyles((theme) => ({
-//   paper: {
-//     marginTop: theme.spacing(8),
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//   },
-//   avatar: {
-//     margin: theme.spacing(1),
-//     backgroundColor: theme.palette.secondary.main,
-//   },
-//   form: {
-//     width: '100%', // Fix IE 11 issue.
-//     marginTop: theme.spacing(3),
-//   },
-//   submit: {
-//     margin: theme.spacing(3, 0, 2),
-//   },
-// }));
-
-// const classes = useStyles();
-
-const styles = {
+const useStyles = makeStyles((theme) => ({
   paper: {
-    // marginTop: theme.spacing(8),
+    marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
   avatar: {
-    // margin: theme.spacing(1),
-    // backgroundColor: theme.palette.secondary.main,
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    // marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
   },
   submit: {
-    // margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 2),
   },
-}
-
+}));
 
 
 function SignUp (){
   
   const [user, setUser] = useState({});
   const { setToken } = useToken(); 
-  const history = useHistory();
+
+  const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -79,10 +56,8 @@ function SignUp (){
     };
     API.createUser(userdata)
     .then( (res) => {
-      //console.log(res);
       const udata = res.data;
       setToken(udata);
-      // history.push("/");
       window.location.href = "/";
     })
   };
@@ -116,21 +91,20 @@ function SignUp (){
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <div style={styles.paper}>
+        <div className={classes.paper}>
         <Typography variant="h3" align="center">Foodies</Typography>
-          <Avatar style={styles.avatar}>
+          <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form styles={styles.form} noValidate onSubmit={handleSubmit}>
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={8}>
                   <TextField
                     autoComplete="uName"
                     name="userName"
-                    // ref={fNameRef}
                     variant="outlined"
                     required
                     fullWidth
@@ -145,7 +119,6 @@ function SignUp (){
                 <TextField
                   autoComplete="fname"
                   name="firstName"
-                  // ref={fNameRef}
                   variant="outlined"
                   required
                   fullWidth
@@ -163,7 +136,6 @@ function SignUp (){
                   id="lastName"
                   label="Last Name"
                   name="lastName"
-                  // ref={lNameRef}
                   autoComplete="lname"
                   onChange={handleInputChange}
                 />
@@ -176,7 +148,6 @@ function SignUp (){
                   id="email"
                   label="Email Address"
                   name="email"
-                  // ref={emailRef}
                   autoComplete="email"
                   onChange={handleInputChange}
                 />
@@ -187,7 +158,6 @@ function SignUp (){
                   required
                   fullWidth
                   name="password"
-                  // ref={passRef}
                   label="Password"
                   type="password"
                   id="password"
@@ -201,7 +171,6 @@ function SignUp (){
                   required
                   fullWidth
                   name="confirmPass"
-                  // ref={confirmRef}
                   label="Confirm Password"
                   type="password"
                   id="confirm"
@@ -215,12 +184,14 @@ function SignUp (){
               fullWidth
               variant="contained"
               color="primary"
-              style={styles.submit}
+              className={classes.submit}
               onClick={handleSubmit}
             >
               Sign Up
             </Button>
-            <Grid container justify="flex-end">
+            <Grid container>
+              <Grid item xs>
+              </Grid>
               <Grid item>
                 <Link href="/" variant="body2">
                   Already have an account? Sign in
@@ -234,7 +205,6 @@ function SignUp (){
         </Box>
       </Container>
     );
-  // }
 }
 
 export default SignUp;

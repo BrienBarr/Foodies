@@ -2,6 +2,11 @@ const db = require("../models");
 
 // Defining methods for the UsersController
 module.exports = {
+  // findAll: function(req, res) {
+  //   db.User.find({}).populate("posts")
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   findOne: function(req, res) {
     db.User.findOne({email: req.params.email})
       .then(dbModel => res.json(dbModel))

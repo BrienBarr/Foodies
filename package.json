@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "server.js",
+    "homepage": "https://foodies-network.herokuapp.com/",
     "repository": "",
     "author": "",
     "license": "MIT",
